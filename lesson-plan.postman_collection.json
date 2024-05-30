@@ -1,0 +1,830 @@
+{
+	"info": {
+		"_postman_id": "6fb9c52a-b29a-4d09-a47b-ef723a2bf18b",
+		"name": "LessonPlanRestApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8338980"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"student1@mail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"newPassword\": \"1234567\",\n    \"newPasswordAgain\": \"1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role\": \"TEACHER\",\n  \"password\": \"123456\",\n  \"firstName\": \"Firstname\",\n  \"lastName\": \"Lastname\",\n  \"email\": \"teache6ts2est@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users?role=STUDENT&page=1&take=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "STUDENT"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Self User Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/self",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"self"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Self User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{adminToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Grade Level",
+			"item": [
+				{
+					"name": "Create Grade Level",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/grade-levels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grade-levels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Grade Level",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/grade-levels/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grade-levels",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Grade Levels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/grade-levels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grade-levels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Grade Level By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/grade-levels/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grade-levels",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{adminToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Course\",\n    \"code\": \"TST\",\n    \"teachers\": [\n        108,109,110\n    ],\n    \"hours\": 1,\n    \"isOptional\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/courses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"isOptional\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/courses/18",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses/15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course Teachers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses/18/teachers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"18",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Courseless Teachers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses/courseless-teachers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"courseless-teachers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{adminToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "Create Class",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"levelId\": 4,\n  \"name\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/classes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"levelId\": 1,\n  \"name\": \"string2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/classes/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"classes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Classes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/classes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Class By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/classes/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"classes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Unenrolled Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/classes/unenroll-students",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"classes",
+								"unenroll-students"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{adminToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Lesson",
+			"item": [
+				{
+					"name": "Create Lesson Plans",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lessons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lessons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Class Lesson Plan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lessons/classes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lessons",
+								"classes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Teachers Total Hours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lessons/total-works",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lessons",
+								"total-works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Student Lesson Plan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{studentToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lessons/students",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lessons",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Teacher Lesson Plan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{teacherToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lessons/teachers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"lessons",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{adminToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "adminToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDEsInJvbGUiOiJBRE1JTiIsImZpcnN0TmFtZSI6IkFETUlOIiwibGFzdE5hbWUiOiJBRE1JTiIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRMUlkxQklZU0p2cUguZHU1UjBueDguLlZhU0p3cTFINVY1dUFQZ0JGWFN3VnAzbTdNRU90MiIsImNyZWF0ZWRBdCI6IjIwMjQtMDUtMzBUMTE6MjQ6MzAuMjExWiJ9LCJpYXQiOjE3MTcwNzkyNjIsImV4cCI6MTc0ODYxNTI2Mn0.pzCyZmYYoveySb7sTrUU7ZKrzltqdWDEa3VHuOU7pz0",
+			"type": "string"
+		},
+		{
+			"key": "studentToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMSwicm9sZSI6IlNUVURFTlQiLCJmaXJzdE5hbWUiOiJTdHVkZW50IiwibGFzdE5hbWUiOiIxIiwiZW1haWwiOiJzdHVkZW50MUBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJExSWTFCSVlTSnZxSC5kdTVSMG54OC4uVmFTSndxMUg1VjV1QVBnQkZYU3dWcDNtN01FT3QyIiwiY3JlYXRlZEF0IjoiMjAyNC0wNS0zMFQxMToyNDoyOS44NDBaIn0sImlhdCI6MTcxNzA3OTMxOCwiZXhwIjoxNzQ4NjE1MzE4fQ.m41XvIUt3KCFe9SlV2tF1FTwmoVRJii-HkJw6nPY-nU",
+			"type": "string"
+		},
+		{
+			"key": "teacherToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJyb2xlIjoiVEVBQ0hFUiIsImZpcnN0TmFtZSI6IlRlYWNoZXIiLCJsYXN0TmFtZSI6IjEiLCJlbWFpbCI6InRlYWNoZXIxQG1haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkTFJZMUJJWVNKdnFILmR1NVIwbng4Li5WYVNKd3ExSDVWNXVBUGdCRlhTd1ZwM203TUVPdDIiLCJjcmVhdGVkQXQiOiIyMDI0LTA1LTMwVDExOjI0OjI5Ljg0MFoifSwiaWF0IjoxNzE3MDc5Mjk3LCJleHAiOjE3NDg2MTUyOTd9.-APK4mE84kugdvP358EIVY4D5Yb56OHjdK0mYJL4ylQ",
+			"type": "string"
+		}
+	]
+}
