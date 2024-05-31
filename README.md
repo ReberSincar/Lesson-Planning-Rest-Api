@@ -30,14 +30,13 @@ Swagger documents can reach from localhost:3000/docs.
 ## Installation
 
 ```bash
+$ docker compose --env-file .env.development up -d
 $ npm install
 ```
 
 ## Running the app
 
 ```bash
-$ docker compose --env-file .env.development up -d
-
 # development
 $ npm run start
 
